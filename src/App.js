@@ -17,11 +17,11 @@ function App() {
   return (
     <div className="App">
       <Navbar className="navbar" bg="light" expand="lg">
-        <Navbar.Brand as={Link} to="/">봉구의 간식</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/react-shopping-mall">봉구의 간식</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/react-shopping-mall">Home</Nav.Link>
             <Nav.Link as={Link} to="/Detail/0">Detail</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -33,10 +33,10 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
+      
   <Switch>
         
-      <Route exact path="/">
+      <Route exact path="/react-shopping-mall">
             
             <Jumbotron className="background">
               <h1>귀여운 , 댕댕이 봉구</h1>
