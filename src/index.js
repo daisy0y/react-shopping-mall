@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import { BrowserRouter } from 'react-router-dom' ;
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -36,7 +35,6 @@ function reducer(state = baseState , action){
       alert('최소 갯수 입니다.')
       copy[0].quan++;
     }
-
     return copy
   }
     else{
@@ -46,7 +44,6 @@ function reducer(state = baseState , action){
 
 let store = createStore(reducer);
 ReactDOM.render(
-  
     <BrowserRouter>
       <Provider store={store}>
        <App />

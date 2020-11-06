@@ -40,8 +40,7 @@ function App() {
       
   <Switch>
         
-      <Route exact path="/react-shopping-mall">
-            
+      <Route exact path="/react-shopping-mall"> 
             <Jumbotron className="background">
               <h1>귀여운 , 댕댕이 봉구</h1>
               <p>
