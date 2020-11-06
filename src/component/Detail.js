@@ -70,9 +70,9 @@ function TabContent(props){
         props.setTabSwitch(true)
     })
     if(props.tab === 0){
-        return <div>첫번째지롱</div>
+        return <div>상품설명란입니다</div>
     } else if(props.tab === 1){
-        return <div>두번째지롱</div>
+        return <div>리뷰란입니다</div>
     }
 }
 
