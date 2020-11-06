@@ -18,20 +18,20 @@ function reducer2(state = true , action){
 }
 
 let baseState =  [{
-  id:0,
-  name:'ABKO(앱코) 오엘라 자동급식기 PF01',
+  id:9999,
+  name:'봉구 간식 사주기',
   quan:1
 }]
 
 
 function reducer(state = baseState , action){
   if(action.type === 'addCart'){
-    
-    let find = state.findIndex((a)=>{return a.id === action.payload.id});
+    let foundIndex = state.findIndex((a)=>{return a.id === action.payload.id});
+    console.log(foundIndex)    
 
-    if( find >= 0){
+    if( foundIndex >= 0){
       let copy = [...state];
-      copy[find].quan++;
+      copy[foundIndex].quan++;
       return copy
 
 

@@ -44,7 +44,7 @@ function Detail(props) {
                     stockCount[id] = stockCount[id]-1
                     props.setStock(stockCount);
                     props.dispatch({type:'addCart',
-                    payload:{id:props.store[id].id+1,name:props.item[props.item[id].id].title,quan:1}})
+                    payload:{id:props.item[props.item[id].id].id,name:props.item[props.item[id].id].title,quan:1}})
                     history.push('/cart')
                     
                 }}>주문하기</button> 
