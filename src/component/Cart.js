@@ -27,7 +27,7 @@ function Cart(props){
                             <span onClick={()=>{props.dispatch({type:'decrease'})}} className="cart-sign"> - </span>
                             {cart.quan}
                             <span onClick={()=>{props.dispatch({type:'increase'})}} className="cart-sign"> + </span></td>
-                        <td>여기뭐넣지</td>
+                        <td>여기뭐 넣지</td>
                        </tr>
                        )
             })}
