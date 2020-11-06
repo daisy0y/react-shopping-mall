@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
 import {Navbar,NavDropdown,Nav,Button,Jumbotron} from 'react-bootstrap'
 import './App.css';
@@ -7,9 +7,12 @@ import Item from './item.js'
 import ItemList from "./component/Itemlist"
 import Detail from "./component/Detail.js"
 import axios from "axios"
+import Cart from './component/Cart.js'
+
+export let stockContext = React.createContext();
 
 function App() {
-
+  
   let [item,setItem] = useState((Item));
   let [stock,setStock] = useState([10,11,5,5,12,9,10,3,9]);
   let [more,setMore] = useState(0);
@@ -23,6 +26,7 @@ function App() {
           <Nav className="ml-auto">
             <Nav.Link as={Link} to="/react-shopping-mall">Home</Nav.Link>
             <Nav.Link as={Link} to="/Detail/0">Detail</Nav.Link>
+            <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -47,8 +51,9 @@ function App() {
                 <Button variant="primary">Learn more</Button>
               </p> */}
             </Jumbotron>
-      
+            <stockContext.Provider value={stock}>
             <div className="container">
+              
               <div className="row">
                 { 
                   item.map((item)=>{
@@ -56,7 +61,8 @@ function App() {
                 })}
               
               </div>
-            </div>
+              
+          
             { more < 1 ? <button onClick={()=>{
             setMore(more+1)
             axios.get('https://daisy0y.github.io/more.json')
@@ -71,13 +77,17 @@ function App() {
               : null
 
             }
-              
-        
+            </div>
+            </stockContext.Provider>
             </Route>
             <Route path="/detail/:id">
                 <Detail item={item} stock={stock} setStock={setStock}/>
             </Route>
-      
+            
+            <Route path="/cart">
+              <Cart></Cart>
+            </Route>
+
   </Switch>
   
 

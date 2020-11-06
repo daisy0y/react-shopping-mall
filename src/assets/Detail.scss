@@ -28,3 +28,13 @@
         opacity: 0;
     }
 }
+
+.tabs-enter{
+    opacity: 0;
+
+}
+
+.tabs-enter-active{
+    opacity: 1;
+    transition: all 500ms;
+}
