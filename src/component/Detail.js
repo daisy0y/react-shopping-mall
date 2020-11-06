@@ -3,6 +3,7 @@ import { useHistory,useParams } from 'react-router-dom';
 import { Nav} from 'react-bootstrap'
 import '../assets/Detail.scss'
 import {CSSTransition} from 'react-transition-group'
+import { connect } from 'react-redux';
 
 
 function Detail(props) {
@@ -35,12 +36,17 @@ function Detail(props) {
                 <h4 className="pt-5">{props.item[props.item[id].id].title}</h4>
                 <p>{props.item[id].content}</p>
                 <p>{props.item[id].price}원</p>
+
                <Info stock={props.stock[id]} setStock={props.setStock}></Info>
+
                 <button className="btn btn-success" onClick={()=>{
-                    let a = [...props.stock];
-                    a[id] = a[id]-1
-                    props.setStock(a)
-                
+                    let stockCount = [...props.stock];
+                    stockCount[id] = stockCount[id]-1
+                    props.setStock(stockCount);
+                    props.dispatch({type:'addCart',
+                    payload:{id:props.store[id].id+1,name:props.item[props.item[id].id].title,quan:1}})
+                    history.push('/cart')
+                    
                 }}>주문하기</button> 
                 <button onClick={()=>{
                     history.goBack();
@@ -83,4 +89,14 @@ function Info(props){
 }
 
 
-export default Detail;
+function storeToProps(state){
+    return {
+        store:state.reducer,
+        alertState:state.reducer2
+
+    }
+}
+
+export default connect(storeToProps)(Detail)
+
+
