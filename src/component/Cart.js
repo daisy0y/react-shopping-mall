@@ -32,7 +32,6 @@ function Cart(props){
             {props.store.map((cart,i)=>{
                 return(
                        <tr key={i}>
-                           <td>{cart.id}</td>
                         <td>{i+1}</td>
                         <td>{cart.name}</td>
                         <td>
