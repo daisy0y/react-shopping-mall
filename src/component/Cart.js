@@ -32,12 +32,21 @@ function Cart(props){
             {props.store.map((cart,i)=>{
                 return(
                        <tr key={i}>
+                           <td>{cart.id}</td>
                         <td>{i+1}</td>
                         <td>{cart.name}</td>
                         <td>
-                            <span onClick={()=>{props.dispatch({type:'decrease',payload:cart.id})}} className="cart-sign"> - </span>
+                            <span onClick={()=>{props.dispatch({
+                                type:'decrease',
+                                payload:i
+                            })}}
+                                className="cart-sign"> - </span>
                             {cart.quan}
-                            <span onClick={()=>{props.dispatch({type:'increase',payload:cart.id})}} className="cart-sign"> + </span></td>
+                            <span onClick={()=>{props.dispatch({
+                                type:'increase',
+                                payload:i
+                                })}} 
+                                className="cart-sign"> + </span></td>
                         <td>여기뭐넣지</td>
                        </tr>
                        )

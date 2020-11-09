@@ -15,7 +15,7 @@ export default [
       content : "털제거돌돌이",
       price : '9,900',
       url : 'https://daisy0y.github.io/images/1.jpg'
-    },
+    },  
   
     {
       id : 2,

@@ -18,7 +18,7 @@ function reducer2(state = true , action){
 }
 
 let baseState =  [{
-  id:9999,
+  id:0,
   name:'봉구 간식 사주기',
   quan:1
 }]
@@ -26,8 +26,9 @@ let baseState =  [{
 
 function reducer(state = baseState , action){
   if(action.type === 'addCart'){
-    let foundIndex = state.findIndex((a)=>{return a.id === action.payload.id});
-    console.log(foundIndex)    
+    let foundIndex = state.findIndex((a)=>{
+      return a.id === action.payload.id
+    });
 
     if( foundIndex >= 0){
       let copy = [...state];
