@@ -1,14 +1,17 @@
 import React from "react";
 import { Table } from 'react-bootstrap'
 import { connect } from "react-redux";
-
-
+import { useHistory } from 'react-router-dom'
+import  '../App.css'
 function Cart(props){
-
+let history = useHistory();
+let BannerClose = function(){
+    props.dispatch({type:'close'})
+}
     return(
     <>{ 
         props.alertState ? 
-     <div onClick={()=>{props.dispatch({type:'close'})}} className="cart-alert">
+     <div onClick={BannerClose} className="cart-alert">
             <p>
                 지금 구매시 봉구 싸인을 보내드려요!<br></br>
                 <em>클릭하면 배너가 사라집니다.</em>
@@ -34,25 +37,33 @@ function Cart(props){
                        <tr key={i}>
                         <td>{i+1}</td>
                         <td>{cart.name}</td>
-                        <td>
+                        <td className="cart-count">
                             <span onClick={()=>{props.dispatch({
                                 type:'decrease',
                                 payload:i
                             })}}
-                                className="cart-sign"> - </span>
+                                className="cart-decrease"> - </span>
                             {cart.quan}
                             <span onClick={()=>{props.dispatch({
                                 type:'increase',
                                 payload:i
                                 })}} 
-                                className="cart-sign"> + </span></td>
+                                className="cart-increase"> + </span></td>
                         <td>여기뭐넣지</td>
                        </tr>
                        )
             })}
         </tbody>
+        
     </Table>
-  
+    <div className="cart-back">
+        <button className="btn btn-success"
+         onClick={()=>{
+             history.goBack();
+        }}>
+            쇼핑 계속하기
+        </button>
+        </div>
 </>
     )
 

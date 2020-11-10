@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState , useContext } from 'react';
+import React, { useState , useContext , lazy,Suspense} from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
 import {Navbar,NavDropdown,Nav,Button,Jumbotron} from 'react-bootstrap'
 import './App.css';
@@ -7,8 +7,8 @@ import Item from './item.js'
 import ItemList from "./component/Itemlist"
 import Detail from "./component/Detail.js"
 import axios from "axios"
-import Cart from './component/Cart.js'
 
+let Cart = lazy(()=>{return import('./component/Cart.js')})
 export let stockContext = React.createContext();
 
 function App() {
@@ -27,14 +27,7 @@ function App() {
             <Nav.Link as={Link} to="/react-shopping-mall">Home</Nav.Link>
             <Nav.Link as={Link} to="/Detail/0">Detail</Nav.Link>
             <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+           </Nav>
         </Navbar.Collapse>
       </Navbar>
       
@@ -84,7 +77,9 @@ function App() {
             </Route>
             
             <Route path="/cart">
+              <Suspense fallback={<div>로딩중입니다.</div>}>
               <Cart></Cart>
+              </Suspense>
             </Route>
 
   </Switch>
